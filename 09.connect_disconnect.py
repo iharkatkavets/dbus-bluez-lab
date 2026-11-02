@@ -58,8 +58,11 @@ class App:
             if address is None or name is None:
                 continue
 
+            print(f"{name.value} {address.value}")
+
             if name.value == self.name or address.value == self.mac:
                 await self.connect_device(address.value)
+            print(f"----------------")
 
         self.object_manager.on_interfaces_added(
             self.interfaces_added
@@ -126,8 +129,10 @@ class App:
         if address is None or name is None:
             return
 
+        print(f"{name.value} {address.value}")
         if name.value == self.name or address.value == self.mac:
             asyncio.create_task(self.connect_device(address.value))
+        print(f"----------------")
 
 
     async def shutdown(self):
